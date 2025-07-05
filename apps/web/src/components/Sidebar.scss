@@ -1,0 +1,10 @@
+.sidebar {
+    li {
+        padding: 0.5rem 1rem;
+        list-style: none;
+        cursor: pointer;
+        &:hover {
+            background-color: #f0f0f0;
+        }
+    }
+}

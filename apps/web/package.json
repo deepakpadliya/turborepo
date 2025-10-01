@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@dnd-kit/abstract": "^0.1.19",
+    "@dnd-kit/helpers": "^0.1.19",
+    "@dnd-kit/react": "^0.1.19",
     "@repo/ui": "workspace:*",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

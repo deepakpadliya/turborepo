@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
 import './App.css'
 import Sidebar from './components/Sidebar'
+import Forms from './components/forms/Forms'
 
 function App() {
 
@@ -10,7 +11,6 @@ function App() {
       <div className='logo'>logo</div>
       <div className='profile'>profile</div>
      </div>
-     
       <aside className='sidebar'>
         <Sidebar />
       </aside>
@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<div>Dashboard</div>} />
-          <Route path='/forms' element={<div>Forms</div>} />
+          <Route path='/forms' Component={Forms} />
           <Route path='/settings' element={<div>Settings</div>} />
         </Routes>
       </BrowserRouter>

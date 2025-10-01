@@ -1,0 +1,13 @@
+Files generated:
+- Full source under src/
+- Vercel entry: api/index.js (requires running `pnpm build` before deploy so dist/serverless.js exists)
+What you should do:
+1) Run `pnpm install`
+2) Copy `.env.example` -> `.env` and set values (MONGO_URI, SMTP creds, JWT_SECRET, FRONTEND_URL)
+3) Run `pnpm run seed` to create admin role/user
+4) Run `pnpm build` to produce dist/
+5) Deploy to Vercel (or run locally `pnpm dev`)
+
+Double-check:
+- Ensure SMTP credentials are valid for password reset emails.
+- For production, consider hashing reset tokens instead of storing plain tokens for extra security.

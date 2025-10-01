@@ -14,9 +14,19 @@ export class AuthClient {
   private api: AxiosInstance;
   private token: string | null = null;
 
-  constructor(baseURL: string = process.env.NEXT_PUBLIC_AUTH_API_URL || 'http://localhost:4000') {
+  constructor(baseURL?: string) {
+    // Handle environment variables safely for both browser and Node.js
+    const defaultURL = 'http://localhost:4000';
+    const envURL = typeof window !== 'undefined' 
+      ? (window as any).env?.NEXT_PUBLIC_AUTH_API_URL
+      : typeof process !== 'undefined' 
+        ? process.env?.NEXT_PUBLIC_AUTH_API_URL
+        : undefined;
+    
+    const finalURL = baseURL || envURL || defaultURL;
+    
     this.api = axios.create({
-      baseURL,
+      baseURL: finalURL,
       headers: {
         'Content-Type': 'application/json',
       },

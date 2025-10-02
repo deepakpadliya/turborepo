@@ -1,6 +1,6 @@
 import { type JSX } from "react";
 
-export function Card({
+const Card = ({
   className,
   title,
   children,
@@ -10,7 +10,7 @@ export function Card({
   title: string;
   children: React.ReactNode;
   href: string;
-}): JSX.Element {
+}): JSX.Element => {
   return (
     <a
       className={className}
@@ -25,3 +25,5 @@ export function Card({
     </a>
   );
 }
+
+export default Card;

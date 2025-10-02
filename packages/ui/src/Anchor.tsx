@@ -4,8 +4,9 @@ export interface AnchorProps extends React.AnchorHTMLAttributes<HTMLAnchorElemen
     children: React.ReactNode
 }
 
-export const Anchor = ({children, ...rest}: AnchorProps) => {
+const Anchor = ({children, ...rest}: AnchorProps) => {
   return (
     <a className='anchor' {...rest}>{children}</a>
   )
 }
+export default Anchor;

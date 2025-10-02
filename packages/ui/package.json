@@ -2,10 +2,31 @@
   "name": "@repo/ui",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "exports": {
-    "./*": "./src/*.tsx"
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./*": {
+      "import": "./dist/esm/*.js",
+      "require": "./dist/cjs/*.js",
+      "types": "./dist/types/*.d.ts"
+    }
   },
   "scripts": {
+    "build": "npm run build:clean && npm run build:esm && npm run build:cjs && npm run build:types",
+    "build:clean": "rm -rf dist",
+    "build:esm": "tsc -p tsconfig.esm.json && npm run copy-styles:esm",
+    "build:cjs": "tsc -p tsconfig.cjs.json && npm run copy-styles:cjs",
+    "build:types": "tsc -p tsconfig.types.json",
+    "copy-styles:esm": "find src -name '*.scss' -exec cp {} dist/esm/ \\;",
+    "copy-styles:cjs": "find src -name '*.scss' -exec cp {} dist/cjs/ \\;",
+    "dev": "npm run build:types -- --watch",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"

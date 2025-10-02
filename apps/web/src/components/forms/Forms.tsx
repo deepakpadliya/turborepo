@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/Button"
+import { Button } from "@repo/ui"
 import { useState } from "react";
 import { DragDropProvider } from "@dnd-kit/react";
 import {move} from '@dnd-kit/helpers';

@@ -1,5 +1,5 @@
 import './Sidebar.scss'
-import Anchor from '@repo/ui/Anchor';
+import { Anchor } from '@repo/ui';
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 

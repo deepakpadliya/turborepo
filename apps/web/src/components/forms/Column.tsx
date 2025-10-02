@@ -1,10 +1,10 @@
 import { CollisionPriority } from '@dnd-kit/abstract';
 import { useDroppable } from '@dnd-kit/react';
 
-const styles = {
+const styles: React.CSSProperties = {
   display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
+  flexDirection: 'row' as const,
+  flexWrap: 'wrap' as const,
   gap: 10,
   padding: 20,
   minWidth: 200,
@@ -12,7 +12,12 @@ const styles = {
   borderRadius: 10,
 };
 
-export function Column({children, id}) {
+interface ColumnProps {
+  children: React.ReactNode;
+  id: string;
+}
+
+export function Column({children, id}: ColumnProps) {
   const {ref} = useDroppable({
     id,
     type: 'column',

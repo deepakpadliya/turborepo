@@ -1,11 +1,11 @@
 "use client";
 
-import { ReactNode } from "react";
 import './Button.scss';
+import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
   className?: string;
+  children: React.ReactNode;
 }
 
 export const Button = (props: ButtonProps) => {

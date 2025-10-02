@@ -1,12 +1,14 @@
 import { type JSX } from "react";
 
+export interface CodeProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
 const Code = ({
   children,
   className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}): JSX.Element => {
+}: CodeProps): JSX.Element => {
   return <code className={className}>{children}</code>;
 }
 

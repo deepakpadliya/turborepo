@@ -1,7 +1,5 @@
 import './Sidebar.scss'
-import { Anchor } from '@repo/ui';
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-
 
 const Sidebar = () => {
   const menus =[
@@ -16,12 +14,12 @@ const Sidebar = () => {
     <ul className="sidebar">
       {menus.map((menu) => (
         <li key={menu.name}>
-          <Anchor href={menu.href}>{menu.name} {menu.submenu ? <ChevronDownIcon /> : null}</Anchor>
+          <a href={menu.href}>{menu.name} {menu.submenu ? <ChevronDownIcon /> : null}</a>
           {menu.submenu && (
             <ul className="submenu">
               {menu.submenu.map((subitem) => (
                 <li key={subitem.name}>
-                  <Anchor href={subitem.href}>{subitem.name}</Anchor>
+                  <a href={subitem.href}>{subitem.name}</a>
                 </li>
               ))}
             </ul>

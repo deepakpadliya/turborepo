@@ -1,4 +1,3 @@
-import { Button } from "@repo/ui"
 import { useState } from "react";
 import { DragDropProvider } from "@dnd-kit/react";
 import {move} from '@dnd-kit/helpers';
@@ -27,7 +26,7 @@ const Forms = () => {
       {JSON.stringify(items, null, 2)}
       <div className="forms-header">
         <h1>Forms</h1>
-        <Button>Add Form</Button>
+        <button>Add Form</button>
       </div>
       <div className="forms-list">
         <DragDropProvider

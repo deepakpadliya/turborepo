@@ -3,6 +3,9 @@
   "name": "auth-service",
   "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
   "buildCommand": "cd ../.. && pnpm run build --filter=auth-service",
+   "builds": [
+    { "src": "dist/main.js", "use": "@vercel/node" }
+  ],
   "routes": [
     {
       "src": "/(.*)",

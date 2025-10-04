@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Service</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; text-align: center; }
+        .endpoint { background: #f8f9fa; padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 4px solid #007bff; }
+        .endpoint code { background: #e9ecef; padding: 2px 6px; border-radius: 3px; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Auth Service API</h1>
+        <p>Welcome to the NestJS Authentication and Authorization Service</p>
+        
+        <div class="endpoint">
+            <strong>Health Check:</strong> <code>GET /health</code>
+            <br><a href="/health">Test endpoint</a>
+        </div>
+        
+        <div class="endpoint">
+            <strong>API Documentation:</strong> <code>GET /api/docs</code>
+            <br><a href="/api/docs">View Swagger UI</a>
+        </div>
+        
+        <div class="endpoint">
+            <strong>Authentication:</strong> <code>POST /auth/login</code>
+            <br>Login with email and password
+        </div>
+        
+        <div class="endpoint">
+            <strong>User Management:</strong> <code>GET /users</code>
+            <br>User CRUD operations
+        </div>
+    </div>
+</body>
+</html>

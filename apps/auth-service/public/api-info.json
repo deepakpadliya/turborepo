@@ -1,0 +1,11 @@
+{
+  "name": "Auth Service",
+  "description": "NestJS Authentication and Authorization API",
+  "version": "1.0.0",
+  "endpoints": {
+    "health": "/health",
+    "swagger": "/api/docs",
+    "auth": "/auth",
+    "users": "/users"
+  }
+}

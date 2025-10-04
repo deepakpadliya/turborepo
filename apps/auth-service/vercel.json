@@ -14,6 +14,22 @@
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/src/lambda.ts"
+    },
+    {
+      "src": "/auth/(.*)",
+      "dest": "/src/lambda.ts"
+    },
+    {
+      "src": "/users/(.*)",
+      "dest": "/src/lambda.ts"
+    },
+    {
+      "src": "/health",
+      "dest": "/src/lambda.ts"
+    },
+    {
       "src": "/favicon.ico",
       "dest": "/public/favicon.ico"
     },

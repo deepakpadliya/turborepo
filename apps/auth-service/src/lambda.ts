@@ -1,24 +1,14 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module'; // Use full app module with auth endpoints
-import { ExpressAdapter } from '@nestjs/platform-express';
 import { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import express from 'express';
 
 let cachedApp: INestApplication;
 
 const createApp = async () => {
   if (!cachedApp) {
-    const expressApp = express();
-    
-    // Configure Express middleware before creating NestJS app
-    expressApp.use(express.json({ limit: '10mb' }));
-    expressApp.use(express.urlencoded({ extended: true, limit: '10mb' }));
-    
-    const adapter = new ExpressAdapter(expressApp);
-    
-    cachedApp = await NestFactory.create(AppModule, adapter, {
-      bodyParser: false, // Disable NestJS body parser since Express handles it
+    cachedApp = await NestFactory.create(AppModule, {
+      bodyParser: true, // Enable body parser for API requests
       logger: ['error', 'warn']
     });
     
@@ -28,7 +18,7 @@ const createApp = async () => {
       allowedHeaders: 'Content-Type,Authorization',
     });
     
-    // Setup Swagger
+    // Setup Swagger with proper configuration for Vercel
     const config = new DocumentBuilder()
       .setTitle('Auth Service')
       .setDescription('Authentication and Authorization API')
@@ -37,7 +27,17 @@ const createApp = async () => {
       .build();
 
     const document = SwaggerModule.createDocument(cachedApp, config);
-    SwaggerModule.setup('api/docs', cachedApp, document);
+    
+    // Configure Swagger for Vercel serverless environment
+    SwaggerModule.setup('api/docs', cachedApp, document, {
+      swaggerOptions: {
+        persistAuthorization: true,
+        displayRequestDuration: true,
+      },
+      customSiteTitle: 'Auth Service API',
+      customfavIcon: '/favicon.ico',
+      customCss: '.swagger-ui .topbar { display: none }',
+    });
     
     await cachedApp.init();
   }

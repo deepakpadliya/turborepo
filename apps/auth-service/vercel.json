@@ -4,7 +4,7 @@
   "installCommand": "pnpm install",
   "builds": [
     {
-      "src": "src/lambda.ts",
+      "src": "dist/lambda.js",
       "use": "@vercel/node"
     },
     {
@@ -15,19 +15,19 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/src/lambda.ts"
+      "dest": "/dist/lambda.js"
     },
     {
       "src": "/auth/(.*)",
-      "dest": "/src/lambda.ts"
+      "dest": "/dist/lambda.js"
     },
     {
       "src": "/users/(.*)",
-      "dest": "/src/lambda.ts"
+      "dest": "/dist/lambda.js"
     },
     {
       "src": "/health",
-      "dest": "/src/lambda.ts"
+      "dest": "/dist/lambda.js"
     },
     {
       "src": "/favicon.ico",
@@ -43,7 +43,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/src/lambda.ts"
+      "dest": "/dist/lambda.js"
     }
   ]
 }

@@ -12,16 +12,11 @@ import { HealthModule } from './health/health.module';
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (cs: ConfigService) => {
-        const uri = cs.get('MONGO_URI');
-        console.log('Connecting to MongoDB with minimal config...');
+      useFactory: async (configService: ConfigService) => {
+        const uri = configService.get<string>('MONGO_URI') || 'mongodb://localhost:27017/auth';
         return {
           uri,
-          // Minimal serverless-friendly configuration
-          maxPoolSize: 1,
-          serverSelectionTimeoutMS: 5000,
-          socketTimeoutMS: 45000,
-        };
+        } as any; // Type assertion to work around strict type checking
       },
       inject: [ConfigService],
     }),

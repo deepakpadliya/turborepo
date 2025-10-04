@@ -47,7 +47,6 @@ const createApp = async () => {
 // Default export for Vercel
 export default async (req: any, res: any) => {
   try {
-    console.log('Vercel handler called:', req.method, req.url);
     
     const app = await createApp();
     const httpAdapter = app.getHttpAdapter();
@@ -57,7 +56,6 @@ export default async (req: any, res: any) => {
     expressInstance(req, res);
     
   } catch (error: any) {
-    console.error('Vercel handler error:', error);
     if (!res.headersSent) {
       res.status(500).json({ 
         error: 'Internal server error', 

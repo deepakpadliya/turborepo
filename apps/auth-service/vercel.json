@@ -4,7 +4,7 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "builds": [
     {
-      "src": "dist/lambda.js",
+      "src": "src/lambda.ts",
       "use": "@vercel/node"
     },
     {
@@ -13,6 +13,22 @@
     }
   ],
   "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/src/lambda.ts"
+    },
+    {
+      "src": "/auth/(.*)",
+      "dest": "/src/lambda.ts"
+    },
+    {
+      "src": "/users/(.*)",
+      "dest": "/src/lambda.ts"
+    },
+    {
+      "src": "/health",
+      "dest": "/src/lambda.ts"
+    },
     {
       "src": "/favicon.ico",
       "dest": "/public/favicon.ico"
@@ -26,24 +42,8 @@
       "dest": "/public/index.html"
     },
     {
-      "src": "/api/(.*)",
-      "dest": "/dist/lambda.js"
-    },
-    {
-      "src": "/auth/(.*)",
-      "dest": "/dist/lambda.js"
-    },
-    {
-      "src": "/users/(.*)",
-      "dest": "/dist/lambda.js"
-    },
-    {
-      "src": "/health",
-      "dest": "/dist/lambda.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/dist/lambda.js"
+      "dest": "/src/lambda.ts"
     }
   ]
 }

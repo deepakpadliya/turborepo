@@ -12,7 +12,17 @@ import { HealthModule } from './health/health.module';
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (cs: ConfigService) => ({ uri: cs.get('MONGO_URI') }),
+      useFactory: (cs: ConfigService) => {
+        const uri = cs.get('MONGO_URI');
+        console.log('Connecting to MongoDB with minimal config...');
+        return {
+          uri,
+          // Minimal serverless-friendly configuration
+          maxPoolSize: 1,
+          serverSelectionTimeoutMS: 5000,
+          socketTimeoutMS: 45000,
+        };
+      },
       inject: [ConfigService],
     }),
     UsersModule,

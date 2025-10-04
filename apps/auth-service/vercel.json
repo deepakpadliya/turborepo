@@ -1,38 +1,17 @@
 {
   "version": 2,
-  "name": "auth-service",
-  "outputDirectory": "dist",
-  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
-  "buildCommand": "cd ../.. && pnpm run build --filter=auth-service",
-   "builds": [
-    { "src": "dist/main.js", "use": "@vercel/node" }
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install",
+  "builds": [
+    {
+      "src": "src/lambda.ts",
+      "use": "@vercel/node"
+    }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/dist/main.js"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type, Authorization"
-        }
-      ]
+      "dest": "/src/lambda.ts"
     }
   ]
 }

@@ -14,6 +14,18 @@
   ],
   "routes": [
     {
+      "src": "/favicon.ico",
+      "dest": "/public/favicon.ico"
+    },
+    {
+      "src": "/api-info.json",
+      "dest": "/public/api-info.json"
+    },
+    {
+      "src": "/",
+      "dest": "/public/index.html"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/dist/lambda.js"
     },
@@ -28,18 +40,6 @@
     {
       "src": "/health",
       "dest": "/dist/lambda.js"
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/public/favicon.ico"
-    },
-    {
-      "src": "/api-info.json",
-      "dest": "/public/api-info.json"
-    },
-    {
-      "src": "/",
-      "dest": "/public/index.html"
     },
     {
       "src": "/(.*)",

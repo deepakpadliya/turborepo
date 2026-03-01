@@ -1,31 +1,29 @@
 import './Sidebar.scss'
-import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { NavLink } from 'react-router';
+import { FaHome, FaWpforms, FaCog } from 'react-icons/fa';
 
-const Sidebar = () => {
+const Sidebar = ({ isCollapsed = false }) => {
   const menus =[
-    { name: 'Dashboard', href: '/' },
-    { name: 'Forms', submenu: [
-      { name: 'Form Design', href: '/forms/design' },
-      { name: 'Form Data', href: '/forms/data' },
-    ]},
-    { name: 'Settings', href: '/settings' },
+    { name: 'Dashboard', href: '/', icon: FaHome },
+    { name: 'Forms', href: '/forms', icon: FaWpforms },
+    { name: 'Settings', href: '/settings', icon: FaCog },
   ];
+
   return (
-    <ul className="sidebar">
-      {menus.map((menu) => (
-        <li key={menu.name}>
-          <a href={menu.href}>{menu.name} {menu.submenu ? <ChevronDownIcon /> : null}</a>
-          {menu.submenu && (
-            <ul className="submenu">
-              {menu.submenu.map((subitem) => (
-                <li key={subitem.name}>
-                  <a href={subitem.href}>{subitem.name}</a>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))}
+    <ul className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+      {menus.map((menu) => {
+        const Icon = menu.icon;
+        return (
+          <li key={menu.name}>
+            <NavLink to={menu.href} className="menu-link">
+              <div className="menu-content">
+                <Icon className="menu-icon" />
+                {!isCollapsed && <span className="menu-text">{menu.name}</span>}
+              </div>
+            </NavLink>
+          </li>
+        );
+      })}
     </ul>
   )
 }

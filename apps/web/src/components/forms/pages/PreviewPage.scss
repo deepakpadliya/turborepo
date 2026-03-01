@@ -1,0 +1,132 @@
+@import '@repo/ui/styles';
+
+.preview-page-wrapper {
+  min-height: 100vh;
+  background: $bg-gradient;
+  padding: $spacing-lg;
+}
+
+.template-selector {
+  background: white;
+  padding: $spacing-lg $spacing-xl;
+  border-bottom: 1px solid $border-light;
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  box-shadow: $shadow-sm;
+  margin: -#{$spacing-lg} -#{$spacing-lg} $spacing-lg -#{$spacing-lg};
+
+  label {
+    font-weight: $font-weight-semibold;
+    color: $text-primary;
+    margin: 0;
+    margin-right: $spacing-md;
+    white-space: nowrap;
+  }
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $border-medium;
+  background: white;
+  color: $text-primary;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-size: $font-size-sm;
+  white-space: nowrap;
+
+  &:hover {
+    border-color: $primary;
+    background: $primary-lightest;
+    color: $primary;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.template-buttons {
+  display: flex;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.template-btn {
+  padding: $spacing-sm $spacing-lg;
+  border: 2px solid $border-medium;
+  background: white;
+  color: $text-primary;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-size: $font-size-sm;
+
+  &:hover {
+    border-color: $primary;
+    background: $primary-lightest;
+  }
+
+  &.active {
+    background: $gradient-primary;
+    color: white;
+    border-color: $primary;
+    box-shadow: $shadow-primary;
+  }
+}
+
+.preview-content {
+  min-height: calc(100vh - 64px);
+}
+
+.preview-loading,
+.preview-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  color: $text-secondary;
+
+  h1 {
+    color: $text-primary;
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-lg;
+  }
+
+  p {
+    font-size: $font-size-base;
+  }
+}
+
+@media (max-width: 768px) {
+  .template-selector {
+    flex-direction: column;
+    align-items: flex-start;
+
+    label {
+      margin-right: 0;
+      margin-bottom: $spacing-sm;
+    }
+  }
+
+  .template-buttons {
+    width: 100%;
+  }
+
+  .template-btn {
+    flex: 1;
+    min-width: 100px;
+  }
+
+  .preview-content {
+    margin-top: 150px;
+  }
+}

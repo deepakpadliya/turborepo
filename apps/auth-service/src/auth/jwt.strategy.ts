@@ -8,10 +8,16 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
     @Inject(ConfigService) private readonly configService: ConfigService
   ) {
+    const secretOrKey = configService.get<string>('JWT_SECRET');
+
+    if (!secretOrKey) {
+      throw new Error('JWT_SECRET is required');
+    }
+
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: 'supersecretjwtkey',
+      secretOrKey,
     });
   }
 

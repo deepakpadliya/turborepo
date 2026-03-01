@@ -17,10 +17,18 @@ import { MailModule } from '../mail/mail.module';
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: async (cs: ConfigService) => ({
-        secret: cs.get<string>('JWT_SECRET'),
-        signOptions: { expiresIn: cs.get<string>('JWT_EXPIRES_IN') || '3600s' },
-      }),
+      useFactory: async (cs: ConfigService) => {
+        const secret = cs.get<string>('JWT_SECRET');
+
+        if (!secret) {
+          throw new Error('JWT_SECRET is required');
+        }
+
+        return {
+          secret,
+          signOptions: { expiresIn: cs.get<string>('JWT_EXPIRES_IN') || '3600s' },
+        };
+      },
     }),
   ],
   providers: [

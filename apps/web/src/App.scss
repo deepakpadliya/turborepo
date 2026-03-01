@@ -1,0 +1,258 @@
+@import '@repo/ui/styles';
+
+.navbar {
+  background: $gradient-primary;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 $spacing-xl;
+  height: 64px;
+  gap: $spacing-lg;
+  box-shadow: $shadow-primary;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-fixed;
+}
+
+.logo {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: white;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex: 1;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  color: white;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  padding: $spacing-sm $spacing-lg;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: $radius-pill;
+  cursor: pointer;
+  transition: all $transition-fast;
+  backdrop-filter: blur(10px);
+}
+
+.profile:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.logout-btn {
+  border: none;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: $spacing-xs $spacing-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+aside.sidebar {
+  background: $bg-primary;
+  width: 260px;
+  height: calc(100vh - 64px);
+  position: fixed;
+  top: 64px;
+  left: 0;
+  transition: width $transition-medium cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: $shadow-md;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 900;
+  
+  &.collapsed {
+    width: 80px;
+  }
+
+  &.open {
+    width: 260px;
+  }
+}
+
+.sidebar {
+  background: $bg-primary;
+}
+
+.container {
+  margin-left: 260px;
+  margin-top: 64px;
+  padding: 0;
+  min-height: calc(100vh - 112px);
+  background: $bg-gradient;
+  transition: margin-left $transition-medium cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.collapsed {
+    margin-left: 80px;
+  }
+
+  &.expanded {
+    margin-left: 260px;
+  }
+}
+
+.public-layout {
+  min-height: 100vh;
+  background: $bg-gradient;
+}
+
+.footer {
+  background: $bg-primary;
+  position: fixed;
+  bottom: 0;
+  left: 260px;
+  right: 0;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-md;
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  font-weight: $font-weight-medium;
+  z-index: 800;
+  transition: left $transition-medium cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.collapsed {
+    left: 80px;
+  }
+
+  &.expanded {
+    left: 260px;
+  }
+}
+
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: $spacing-sm $spacing-md;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  color: white;
+  transition: all $transition-fast;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  font-size: $font-size-lg;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 $spacing-lg;
+    height: 56px;
+    
+    .logo {
+      font-size: $font-size-lg;
+      gap: $spacing-xs;
+    }
+    
+    .profile {
+      font-size: $font-size-sm;
+      padding: $spacing-xs $spacing-md;
+      gap: $spacing-sm;
+    }
+
+    .logout-btn {
+      padding: $spacing-xs $spacing-sm;
+      font-size: $font-size-xs;
+    }
+  }
+  
+  aside.sidebar {
+    width: 240px;
+    height: calc(100vh - 56px);
+    top: 56px;
+  }
+  
+  .container {
+    margin-left: 0;
+    margin-top: 56px;
+    min-height: calc(100vh - 104px);
+  }
+  
+  .footer {
+    left: 0;
+    height: 48px;
+    top: auto;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 $spacing-md;
+    height: 60px;
+    
+    .logo {
+      font-size: $font-size-base;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    
+    .profile {
+      font-size: $font-size-xs;
+      padding: $spacing-xs $spacing-sm;
+      gap: $spacing-xs;
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .logout-btn {
+      padding: $spacing-xs;
+      font-size: $font-size-xs;
+    }
+  }
+  
+  aside.sidebar {
+    width: 100%;
+    height: calc(100vh - 108px);
+    top: 60px;
+    border-right: none;
+    border-bottom: 1px solid $border-light;
+  }
+  
+  .container {
+    margin-left: 0;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    min-height: calc(100vh - 120px);
+    padding: $spacing-md;
+  }
+  
+  .footer {
+    left: 0;
+    right: 0;
+    height: 60px;
+    bottom: 0;
+    font-size: $font-size-xs;
+  }
+}

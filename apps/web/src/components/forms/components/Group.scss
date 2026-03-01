@@ -1,0 +1,207 @@
+@import '@repo/ui/styles';
+
+.group-container {
+    background: $bg-primary;
+    padding: $spacing-xl;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+    border: 2px solid transparent;
+    transition: all $transition-medium;
+
+    &:hover {
+        box-shadow: $shadow-lg;
+        transform: translateY(-2px);
+    }
+
+    &.dragging {
+        opacity: 0.5;
+        box-shadow: $shadow-xl;
+    }
+
+    &.drag-over {
+        border-color: $primary;
+        background: $bg-tertiary;
+    }
+
+    .group-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $spacing-lg;
+        padding-bottom: $spacing-md;
+        border-bottom: 2px solid $bg-tertiary;
+
+        .group-label-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: $spacing-sm;
+            margin-right: $spacing-lg;
+
+            .drag-handle {
+                cursor: grab;
+                padding: $spacing-sm $spacing-md;
+                border-radius: $radius-md;
+                transition: all $transition-fast;
+                user-select: none;
+
+                &:hover {
+                    background: $bg-secondary;
+                }
+
+                &:active {
+                    cursor: grabbing;
+                    background: $bg-tertiary;
+                }
+
+                &::before {
+                    content: "⋮⋮";
+                    font-size: $font-size-md;
+                    color: $text-muted;
+                    letter-spacing: -2px;
+                }
+            }
+
+            .group-label {
+                font-size: $font-size-lg;
+                font-weight: $font-weight-semibold;
+                color: $text-primary;
+                flex: 1;
+            }
+
+            :global(.inputWrapper) {
+                flex: 1;
+            }
+        }
+
+        .group-actions {
+            display: flex;
+            gap: $spacing-sm;
+
+            button {
+                transition: all $transition-fast;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+
+    .fields-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: $spacing-md;
+        min-height: 60px;
+        padding: $spacing-lg;
+        background: $bg-secondary;
+        border-radius: $radius-md;
+        border: 2px dashed $border-medium;
+        transition: all $transition-fast;
+
+        &:empty::after {
+            content: "Drop fields here";
+            color: $text-light;
+            font-size: $font-size-base;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+        }
+
+        &.is-drop-target {
+            background: $primary-lightest;
+            border-color: $primary-light;
+            border-style: solid;
+        }
+    }
+}
+
+// Tablet (768px and below)
+@media (max-width: 768px) {
+    .group-container {
+        padding: $spacing-lg;
+
+        .group-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $spacing-md;
+
+            .group-label-container {
+                width: 100%;
+
+                .group-label {
+                    font-size: $font-size-base;
+                }
+            }
+
+            .group-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        .fields-container {
+            flex-direction: column;
+            gap: $spacing-sm;
+            padding: $spacing-md;
+        }
+    }
+}
+
+// Mobile (480px and below)
+@media (max-width: 480px) {
+    .group-container {
+        padding: $spacing-md;
+        border-radius: $radius-md;
+
+        .group-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $spacing-sm;
+            margin-bottom: $spacing-md;
+            padding-bottom: $spacing-sm;
+
+            .group-label-container {
+                width: 100%;
+                gap: $spacing-xs;
+
+                .drag-handle {
+                    padding: $spacing-xs $spacing-sm;
+                    font-size: $font-size-base;
+
+                    &::before {
+                        font-size: $font-size-base;
+                    }
+                }
+
+                .group-label {
+                    font-size: $font-size-base;
+                }
+            }
+
+            .group-actions {
+                width: 100%;
+                gap: $spacing-xs;
+
+                button {
+                    padding: $spacing-xs $spacing-sm;
+                }
+            }
+        }
+
+        .fields-container {
+            flex-direction: column;
+            gap: $spacing-xs;
+            min-height: 50px;
+            padding: $spacing-sm;
+
+            &:empty::after {
+                height: 50px;
+                font-size: $font-size-sm;
+            }
+        }
+    }
+}

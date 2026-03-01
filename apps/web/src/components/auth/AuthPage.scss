@@ -1,0 +1,83 @@
+@import '@repo/ui/styles';
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl;
+  background: $bg-gradient;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  padding: $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  h1 {
+    margin: 0;
+    font-size: $font-size-2xl;
+    color: $text-primary;
+  }
+
+  p {
+    margin: 0;
+    color: $text-secondary;
+    font-size: $font-size-sm;
+  }
+}
+
+.auth-mode-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-xs;
+  background: $bg-secondary;
+  border-radius: $radius-md;
+  padding: $spacing-xs;
+
+  button {
+    border: none;
+    border-radius: $radius-sm;
+    background: transparent;
+    color: $text-secondary;
+    padding: $spacing-sm;
+    cursor: pointer;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    &.active {
+      background: $bg-primary;
+      color: $text-primary;
+      box-shadow: $shadow-sm;
+    }
+  }
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.password-strength {
+  font-size: $font-size-xs;
+  text-transform: capitalize;
+
+  &.weak {
+    color: $error;
+  }
+
+  &.medium {
+    color: $warning;
+  }
+
+  &.strong {
+    color: $success;
+  }
+}

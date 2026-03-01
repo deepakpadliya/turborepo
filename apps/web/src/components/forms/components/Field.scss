@@ -1,0 +1,235 @@
+@import '@repo/ui/styles';
+
+.field-item {
+    position: relative;
+    width: calc(33.333% - 8px);
+    min-width: 140px;
+    background: $bg-primary;
+    padding: $spacing-md $spacing-lg;
+    border-radius: $radius-md;
+    border: 2px solid $border-light;
+    box-shadow: $shadow-sm;
+    transition: all $transition-fast;
+    cursor: move;
+    user-select: none;
+
+    &:hover {
+        border-color: $primary;
+        box-shadow: $shadow-primary;
+        transform: translateY(-2px);
+    }
+
+    &.dragging {
+        opacity: 0.4;
+        cursor: grabbing;
+    }
+
+    &.sorting {
+        z-index: 999;
+        box-shadow: $shadow-xl;
+    }
+
+    .field-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $spacing-sm;
+
+        .field-label-wrapper {
+            display: flex;
+            align-items: center;
+            gap: $spacing-sm;
+            flex: 1;
+
+            .field-type-badge {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 28px;
+                height: 28px;
+                border-radius: $radius-md;
+                color: $bg-primary;
+                font-size: $font-size-sm;
+                flex-shrink: 0;
+                box-shadow: $shadow-sm;
+                transition: all $transition-fast;
+
+                &:hover {
+                    transform: scale(1.1);
+                    box-shadow: $shadow-md;
+                }
+            }
+        }
+
+        .field-label {
+            font-size: $font-size-base;
+            font-weight: $font-weight-medium;
+            color: $text-secondary;
+            font-family: $font-family-base;
+            flex: 1;
+        }
+
+        .field-input {
+            flex: 1;
+            padding: $spacing-xs $spacing-sm;
+            font-size: $font-size-base;
+            font-weight: $font-weight-medium;
+            color: $text-secondary;
+            border: 2px solid $primary;
+            border-radius: $radius-sm;
+            background: $bg-primary;
+            outline: none;
+            transition: all $transition-fast;
+            font-family: $font-family-base;
+
+            &::placeholder {
+                color: $text-light;
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 3px $primary-lightest;
+            }
+        }
+
+        .field-actions {
+            display: flex;
+            align-items: center;
+            gap: $spacing-xs;
+
+            .field-action-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                color: $text-light;
+                transition: all $transition-fast;
+                border-radius: $radius-sm;
+                padding: 0;
+
+                &:hover {
+                    background: $bg-secondary;
+                    color: $primary;
+                    transform: scale(1.1);
+                }
+
+                &.edit-btn {
+                    &:hover {
+                        color: $info;
+                    }
+                }
+
+                &.delete-btn {
+                    &:hover {
+                        color: $error;
+                        background: rgba($error, 0.1);
+                    }
+                }
+
+                &.save-btn {
+                    &:hover {
+                        color: $success;
+                        background: rgba($success, 0.1);
+                    }
+                }
+
+                &.cancel-btn {
+                    &:hover {
+                        color: $error;
+                        background: rgba($error, 0.1);
+                    }
+                }
+            }
+
+            .drag-handle {
+                color: $text-light;
+                font-size: $font-size-xs;
+                cursor: grab;
+                padding: $spacing-xs;
+
+                &:active {
+                    cursor: grabbing;
+                }
+            }
+        }
+    }
+
+    &:hover .field-icon {
+        color: $primary;
+    }
+
+    // Pulse animation for newly added fields
+    @keyframes fieldPulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    &.field-new {
+        animation: fieldPulse 0.5s ease-in-out;
+    }
+}
+
+// Empty state
+.field-item-empty {
+    width: 100%;
+    padding: $spacing-xl;
+    text-align: center;
+    color: $text-light;
+    font-style: italic;
+    font-size: $font-size-base;
+}
+
+// Tablet (768px and below)
+@media (max-width: 768px) {
+    .field-item {
+        width: calc(50% - 4px);
+        min-width: 120px;
+        padding: $spacing-md;
+
+        .field-content {
+            gap: $spacing-xs;
+
+            .field-label {
+                font-size: $font-size-sm;
+            }
+        }
+    }
+}
+
+// Mobile (480px and below)
+@media (max-width: 480px) {
+    .field-item {
+        width: 100%;
+        min-width: 100%;
+        padding: $spacing-md;
+        border-radius: $radius-md;
+
+        .field-content {
+            gap: $spacing-xs;
+
+            .field-label {
+                font-size: $font-size-sm;
+            }
+
+            .field-icon {
+                font-size: $font-size-xs;
+            }
+        }
+
+        &:hover {
+            transform: translateY(-1px);
+        }
+    }
+
+    .field-item-empty {
+        padding: $spacing-lg;
+        font-size: $font-size-sm;
+    }
+}

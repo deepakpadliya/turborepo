@@ -1,0 +1,154 @@
+@import '@repo/ui/styles';
+
+.form-data-container {
+  padding: $spacing-2xl;
+  
+  h1 {
+    margin-bottom: $spacing-lg;
+    color: $text-primary;
+  }
+  
+  p {
+    margin-bottom: $spacing-2xl;
+    color: $text-secondary;
+  }
+
+  .form-data-error {
+    background: rgba($error, 0.08);
+    color: $error;
+    border: 1px solid rgba($error, 0.2);
+    border-radius: $radius-md;
+    padding: $spacing-md;
+    margin-bottom: $spacing-lg;
+    font-size: $font-size-sm;
+  }
+
+  .form-data-success {
+    background: rgba($success, 0.1);
+    color: $success;
+    border: 1px solid rgba($success, 0.25);
+    border-radius: $radius-md;
+    padding: $spacing-md;
+    margin-bottom: $spacing-lg;
+    font-size: $font-size-sm;
+  }
+
+  .form-data-state {
+    color: $text-secondary;
+    font-size: $font-size-sm;
+    padding: $spacing-md;
+    background: $bg-primary;
+    border-radius: $radius-md;
+    box-shadow: $shadow-sm;
+  }
+
+  .form-data-card {
+    background: $bg-primary;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+    padding: $spacing-xl;
+
+    .submissions-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $spacing-lg;
+
+      h2 {
+        margin: 0;
+        font-size: $font-size-xl;
+        color: $text-primary;
+      }
+    }
+
+    .submissions-table-wrapper {
+      overflow-x: auto;
+
+      .submissions-table-controls {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 240px;
+        gap: $spacing-md;
+        margin-bottom: $spacing-md;
+      }
+    }
+
+    .submissions-table {
+      .submission-cell {
+        max-width: 240px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .table-actions {
+        display: flex;
+        gap: $spacing-xs;
+        align-items: center;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+      }
+
+      .actions-head,
+      .actions-cell {
+        width: 1%;
+        white-space: nowrap;
+      }
+    }
+
+    .backend-group {
+      border: 1px solid $border-light;
+      border-radius: $radius-md;
+      padding: $spacing-lg;
+      margin-bottom: $spacing-lg;
+
+      h2 {
+        margin: 0 0 $spacing-md 0;
+        font-size: $font-size-lg;
+        color: $text-primary;
+      }
+    }
+
+    .backend-fields {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: $spacing-md;
+    }
+
+    .backend-field {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-xs;
+
+      span {
+        color: $text-primary;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        border: 2px solid $border-medium;
+        border-radius: $radius-sm;
+        padding: $spacing-sm;
+        color: $text-primary;
+        font-family: $font-family-base;
+        font-size: $font-size-sm;
+        background: $bg-primary;
+
+        &:focus {
+          outline: none;
+          border-color: $primary;
+        }
+      }
+    }
+
+    .form-data-submit-row {
+      margin-top: $spacing-lg;
+      display: flex;
+      justify-content: flex-end;
+      gap: $spacing-sm;
+    }
+  }
+}

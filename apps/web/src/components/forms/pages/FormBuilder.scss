@@ -1,0 +1,180 @@
+@import '@repo/ui/styles';
+
+.form-builder-container {
+  min-height: 100vh;
+  background: $bg-gradient;
+  padding: $spacing-xl;
+
+  .form-builder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-2xl;
+    padding: $spacing-xl;
+    background: $bg-primary;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+
+    h1 {
+      margin: 0;
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-semibold;
+      color: $text-primary;
+      background: $gradient-primary;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: $spacing-sm;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+  }
+
+  .form-builder-error {
+    background: rgba($error, 0.08);
+    color: $error;
+    border: 1px solid rgba($error, 0.2);
+    border-radius: $radius-md;
+    padding: $spacing-md;
+    margin-bottom: $spacing-lg;
+    font-size: $font-size-sm;
+  }
+
+  .form-builder-loading {
+    color: $text-secondary;
+    font-size: $font-size-lg;
+  }
+
+  .group-popover-content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    min-width: 280px;
+  }
+
+  .form-metadata-card {
+    background: $bg-primary;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+    padding: $spacing-lg;
+    margin-bottom: $spacing-xl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    .description-field {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-xs;
+
+      label {
+        color: $text-primary;
+        font-weight: $font-weight-medium;
+        font-size: $font-size-sm;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 80px;
+        border-radius: $radius-md;
+        border: 2px solid $border-medium;
+        font-size: $font-size-base;
+        font-family: $font-family-base;
+        padding: $spacing-sm $spacing-md;
+        color: $text-primary;
+        transition: border-color $transition-fast;
+
+        &:focus {
+          outline: none;
+          border-color: $primary;
+        }
+      }
+    }
+  }
+
+  .publish-modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    p {
+      margin: 0;
+      color: $text-secondary;
+      font-size: $font-size-sm;
+    }
+
+    .publish-link-row {
+      display: flex;
+      gap: $spacing-sm;
+      align-items: center;
+
+      input {
+        flex: 1;
+        border: 2px solid $border-medium;
+        border-radius: $radius-md;
+        padding: $spacing-sm $spacing-md;
+        font-size: $font-size-sm;
+        color: $text-primary;
+      }
+    }
+  }
+
+  .publish-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-sm;
+  }
+
+  .forms-list {
+    background: $bg-primary;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+
+    .drag-drop-container {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-lg;
+      padding: $spacing-lg;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .form-builder-container {
+    padding: $spacing-lg;
+
+    .form-builder-header {
+      flex-direction: column;
+      gap: $spacing-md;
+      align-items: flex-start;
+      padding: $spacing-lg;
+
+      .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      h1 {
+        font-size: $font-size-xl;
+      }
+    }
+
+    .forms-list {
+      .drag-drop-container {
+        gap: $spacing-md;
+        padding: $spacing-md;
+      }
+    }
+
+    .publish-modal-content {
+      .publish-link-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  }
+}

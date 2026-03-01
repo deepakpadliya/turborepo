@@ -1,22 +1,55 @@
-# Auth Service (NestJS) — ready for Turborepo & Vercel (serverless)
+# Auth Service
 
-This is a ready-to-drop-in authentication microservice built with NestJS, TypeScript, MongoDB (Mongoose), and ready to be deployed as a Vercel serverless function.
+Authentication and authorization service built with NestJS + MongoDB.
 
-How it works:
-- Source in `src/`
-- Build: `pnpm build` -> compiles `src/` -> `dist/`
-- Vercel entrypoint `api/index.js` expects `dist/serverless.js` which exports `handler`
+## Run locally
 
-Important:
-1. Install dependencies: `pnpm install`
-2. Set environment variables from `.env.example` (create `.env`)
-3. Run seed to create default admin role & user: `pnpm run seed`
-4. Build: `pnpm build`
-5. Deploy to Vercel (or run locally `pnpm dev`)
+1. Install dependencies from workspace root:
 
-Swagger docs will be available at `/api/docs` when running locally.
+```sh
+pnpm install
+```
 
-Notes about Vercel:
-- This project uses a small serverless adapter exported in `src/serverless.ts` and built to `dist/serverless.js`.
-- Ensure you run `pnpm build` before deploying so `dist/serverless.js` exists.
+2. Start MongoDB from workspace root:
+
+```sh
+docker compose up -d mongo
+```
+
+3. Create local env file from example:
+
+```sh
+cp apps/auth-service/.env.example apps/auth-service/.env
+```
+
+4. Start in dev mode:
+
+```sh
+pnpm --filter auth-service start:dev
+```
+
+5. (Optional) Seed default admin/roles:
+
+```sh
+pnpm --filter auth-service seed
+```
+
+## Local URLs
+
+- Base URL: `http://localhost:3000`
+- Swagger UI: `http://localhost:3000/api/docs`
+- Health check: `http://localhost:3000/`
+- Health check (alt): `http://localhost:3000/health`
+
+## Common auth endpoints
+
+- `POST /auth/login`
+- `POST /auth/me` (Bearer token)
+- `POST /auth/forgot-password`
+- `POST /auth/reset-password`
+
+## Notes
+
+- Mongo connection uses `MONGO_URI` and falls back to `mongodb://localhost:27017/auth`.
+- This service currently listens on port `3000` in `src/main.ts`.
 

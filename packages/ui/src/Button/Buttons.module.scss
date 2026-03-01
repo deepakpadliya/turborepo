@@ -1,0 +1,46 @@
+@import '../styles/variables';
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-md;
+  border: none;
+  cursor: pointer;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  background: $gradient-primary;
+  color: white;
+  transition: all $transition-fast;
+  box-shadow: $shadow-primary;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: $shadow-primary;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-md;
+  }
+
+  .text {
+    display: flex;
+    align-items: center;
+  }
+}

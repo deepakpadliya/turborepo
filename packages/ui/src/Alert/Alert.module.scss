@@ -1,0 +1,32 @@
+@import '../styles/variables.scss';
+
+.alert {
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  font-size: $font-size-sm;
+  border: 1px solid transparent;
+}
+
+.error {
+  background: rgba($error, 0.08);
+  color: $error;
+  border-color: rgba($error, 0.2);
+}
+
+.success {
+  background: rgba($success, 0.08);
+  color: $success;
+  border-color: rgba($success, 0.2);
+}
+
+.info {
+  background: rgba($info, 0.08);
+  color: $info;
+  border-color: rgba($info, 0.2);
+}
+
+.warning {
+  background: rgba($warning, 0.12);
+  color: $text-primary;
+  border-color: rgba($warning, 0.35);
+}

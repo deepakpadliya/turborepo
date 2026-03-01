@@ -1,0 +1,14 @@
+@import '../styles/variables.scss';
+
+.stateMessage {
+  color: $text-secondary;
+  font-size: $font-size-sm;
+}
+
+.default {
+  color: $text-secondary;
+}
+
+.error {
+  color: $error;
+}

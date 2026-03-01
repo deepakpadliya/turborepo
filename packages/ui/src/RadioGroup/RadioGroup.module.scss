@@ -1,0 +1,26 @@
+@import '../styles/variables';
+
+.group {
+  display: flex;
+  gap: $spacing-md;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.option {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: $text-primary;
+  font-size: $font-size-sm;
+}
+
+.option input {
+  accent-color: $primary;
+}

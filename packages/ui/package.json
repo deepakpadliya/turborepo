@@ -1,0 +1,30 @@
+{
+  "name": "@repo/ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "exports":{
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./styles": {
+      "import": "./src/styles/variables.scss",
+      "require": "./src/styles/variables.scss"
+    },
+    "./styles/*": "./src/styles/*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3"
+  }
+}

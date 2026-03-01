@@ -1,0 +1,30 @@
+@import '../styles/variables.scss';
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: $bg-primary;
+}
+
+.tableHeadCell,
+.tableCell {
+  text-align: left;
+  padding: $spacing-sm $spacing-md;
+  border-bottom: 1px solid $border-light;
+  color: $text-primary;
+  font-size: $font-size-sm;
+  vertical-align: middle;
+}
+
+.tableHeadCell {
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $text-secondary;
+  font-weight: $font-weight-semibold;
+  background: $bg-secondary;
+}
+
+.tableBody .tableRow:hover {
+  background: $bg-tertiary;
+}

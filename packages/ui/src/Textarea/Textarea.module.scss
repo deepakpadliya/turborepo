@@ -1,0 +1,46 @@
+@import '../styles/variables';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  width: 100%;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $text-primary;
+}
+
+.textarea {
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-base;
+  color: $text-primary;
+  border: 2px solid $border-medium;
+  border-radius: $radius-md;
+  background: $bg-primary;
+  outline: none;
+  transition: all $transition-fast;
+  font-family: inherit;
+  resize: vertical;
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 3px $primary-lightest;
+  }
+}
+
+.error {
+  border-color: $error;
+}
+
+.errorText {
+  font-size: $font-size-sm;
+  color: $error;
+}
+
+.helperText {
+  font-size: $font-size-sm;
+  color: $text-muted;
+}

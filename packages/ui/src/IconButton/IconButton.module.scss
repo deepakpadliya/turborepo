@@ -1,0 +1,52 @@
+@import '../styles/variables';
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-sm;
+  background: transparent;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: background-color $transition-fast, color $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: $bg-tertiary;
+    color: $text-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 1px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.danger {
+  color: $error;
+
+  &:hover:not(:disabled) {
+    background: rgba($error, 0.12);
+    color: $error;
+  }
+
+  &:focus-visible {
+    outline-color: $error;
+  }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-md;
+  line-height: 1;
+}

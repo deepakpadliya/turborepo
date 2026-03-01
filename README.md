@@ -82,3 +82,70 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
 - [Configuration Options](https://turborepo.com/docs/reference/configuration)
 - [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+
+## Local MongoDB with Docker
+
+Run MongoDB locally for services that need `MONGO_URI` (for example, `api-service`):
+
+### One-click from README (VS Code)
+
+Open this README in Markdown Preview and click:
+
+- [Start MongoDB](command:workbench.action.tasks.runTask?%22Mongo%3A%20Up%22)
+- [Stop MongoDB](command:workbench.action.tasks.runTask?%22Mongo%3A%20Down%22)
+- [View Mongo logs](command:workbench.action.tasks.runTask?%22Mongo%3A%20Logs%22)
+
+If command links are blocked, trust the workspace and allow command links in Markdown.
+
+1. Start MongoDB with Docker Compose:
+
+```sh
+docker compose up -d mongo
+```
+
+2. Verify it is running:
+
+```sh
+docker compose ps
+```
+
+3. Use this connection string in your app env:
+
+```sh
+MONGO_URI=mongodb://localhost:27017/api_service
+```
+
+Alternative (direct Docker command):
+
+```sh
+docker run -d \
+	--name turbo-mongo \
+	-p 27017:27017 \
+	-v turbo-mongo-data:/data/db \
+	mongo:7
+```
+
+Useful commands:
+
+```sh
+# stop compose service
+docker compose stop mongo
+
+# start compose service again
+docker compose start mongo
+
+# remove compose service containers
+docker compose down
+
+# stop
+docker stop turbo-mongo
+
+# start again
+docker start turbo-mongo
+
+# remove container (data stays in named volume unless deleted)
+docker rm -f turbo-mongo
+
+# delete persisted data volume
+docker volume rm turbo-mongo-data
+```

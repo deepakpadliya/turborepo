@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Mongo: Up",
+      "type": "shell",
+      "command": "docker compose up -d mongo",
+      "group": "build"
+    },
+    {
+      "label": "Mongo: Down",
+      "type": "shell",
+      "command": "docker compose stop mongo"
+    },
+    {
+      "label": "Mongo: Logs",
+      "type": "shell",
+      "command": "docker compose logs -f mongo",
+      "isBackground": true
+    }
+  ]
+}
